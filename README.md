@@ -1,12 +1,12 @@
-# ❤️ Heart Disease Prediction System
+#  Heart Disease Prediction System
 
 A complete machine learning web application that predicts heart disease risk using a trained Logistic Regression model. Features a modern web interface with real-time predictions and medical-themed design.
 
-## 🚀 Quick Start
+##  Quick Start
 
 
 
-## 📊 Dataset Description
+## Dataset Description
 
 The dataset contains **918 patient records** with 11 medical features:
 
@@ -26,7 +26,7 @@ The dataset contains **918 patient records** with 11 medical features:
 ### Target Variable:
 - **HeartDisease**: 0 = No heart disease, 1 = Heart disease present
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 AIML pbl/
@@ -63,7 +63,7 @@ AIML pbl/
 
 
 
-## 🔧 Data Preprocessing Pipeline
+##  Data Preprocessing Pipeline
 
 Our preprocessing pipeline handles the complete data transformation:
 
@@ -87,7 +87,7 @@ Our preprocessing pipeline handles the complete data transformation:
 - **Testing Set**: 184 patients (20%)
 - **Stratified sampling** maintains class distribution
 
-## 🤖 Model Performance
+##  Model Performance
 
 ### Trained Model: Logistic Regression
 - **Algorithm**: Logistic Regression with liblinear solver
@@ -106,7 +106,7 @@ Our preprocessing pipeline handles the complete data transformation:
 - **High Risk**: 65-80% probability
 - **Very High Risk**: > 80% probability
 
-## 🌐 Web Interface Features
+## Web Interface Features
 
 ### Modern Medical-Themed Design:
 - **Red & White Theme**: Professional medical appearance
@@ -128,7 +128,7 @@ This will check:
 - ✅ Model loading capability
 - ✅ Web interface functionality
 
-## 📝 Notes
+##  Notes
 
 - **Model Accuracy**: 89.13% on test data (184 patients)
 - **Training Data**: 734 patients from 918 total records
