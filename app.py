@@ -146,20 +146,21 @@ def predict():
         patient_data = request.get_json()
         
         if not patient_data:
-            return jsonify({'error': 'No data provided'}), 400
+            return jsonify({'success': False, 'error': 'No data provided'}), 400
         
         # Load model if not already loaded
         if not prediction_api.is_loaded:
             if not prediction_api.load_model_components():
-                return jsonify({'error': 'Model loading failed'}), 500
+                return jsonify({'success': False, 'error': 'Model loading failed'}), 500
         
         # Make prediction
         result = prediction_api.make_prediction(patient_data)
+        result['success'] = True
         return jsonify(result)
         
     except Exception as e:
         print(f"❌ Error: {str(e)}")
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 @app.route('/health')
 def health():
