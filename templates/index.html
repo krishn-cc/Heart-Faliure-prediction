@@ -28,7 +28,9 @@
             box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
             padding: 40px;
             max-width: 800px;
+            max-height: 90vh;
             width: 100%;
+            overflow-y: auto;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(220, 38, 38, 0.1);
         }
@@ -138,6 +140,31 @@
             display: block;
         }
 
+        /* Risk Level Color Coding */
+        .result-container.risk-low {
+            background: linear-gradient(135deg, #d1fae5 0%, #10b981 100%);
+            color: #064e3b;
+            border: 3px solid #10b981;
+        }
+
+        .result-container.risk-moderate {
+            background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 100%);
+            color: #78350f;
+            border: 3px solid #f59e0b;
+        }
+
+        .result-container.risk-high {
+            background: linear-gradient(135deg, #fed7aa 0%, #f97316 100%);
+            color: #7c2d12;
+            border: 3px solid #f97316;
+        }
+
+        .result-container.risk-very-high {
+            background: linear-gradient(135deg, #fecaca 0%, #dc2626 100%);
+            color: white;
+            border: 3px solid #dc2626;
+        }
+
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -207,11 +234,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        .risk-low { background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%); color: #dc2626; }
-        .risk-moderate { background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%); color: #b91c1c; }
-        .risk-high { background: linear-gradient(135deg, #fecaca 0%, #dc2626 100%); color: white; }
-        .risk-very-high { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; }
-
         .info-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -220,12 +242,19 @@
         }
 
         .info-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+            background: white;
             padding: 20px;
             border-radius: 12px;
             text-align: center;
             color: #333;
-            border: 1px solid rgba(220, 38, 38, 0.1);
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #dc2626;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15);
         }
 
         .info-card i {
@@ -247,6 +276,134 @@
             display: block;
         }
 
+        /* Risk Guide Styles */
+        .risk-guide {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border: 2px solid #e5e7eb;
+            display: block !important;
+            visibility: visible !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .risk-guide h3 {
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            color: #1f2937;
+        }
+
+        .risk-levels {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .risk-level-card {
+            padding: 12px 8px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid;
+            background: white;
+        }
+
+        .risk-level-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .level-low {
+            border-color: #10b981;
+        }
+
+        .level-low:hover {
+            background: #ecfdf5;
+        }
+
+        .level-moderate {
+            border-color: #f59e0b;
+        }
+
+        .level-moderate:hover {
+            background: #fffbeb;
+        }
+
+        .level-high {
+            border-color: #f97316;
+        }
+
+        .level-high:hover {
+            background: #fff7ed;
+        }
+
+        .level-very-high {
+            border-color: #dc2626;
+        }
+
+        .level-very-high:hover {
+            background: #fef2f2;
+        }
+
+        .level-icon {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .level-low .level-icon {
+            color: #10b981;
+        }
+
+        .level-moderate .level-icon {
+            color: #f59e0b;
+        }
+
+        .level-high .level-icon {
+            color: #f97316;
+        }
+
+        .level-very-high .level-icon {
+            color: #dc2626;
+        }
+
+        .level-title {
+            font-weight: 700;
+            font-size: 0.9em;
+            color: #1f2937;
+            margin-bottom: 3px;
+        }
+
+        .level-range {
+            font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 3px;
+        }
+
+        .level-low .level-range {
+            color: #10b981;
+        }
+
+        .level-moderate .level-range {
+            color: #f59e0b;
+        }
+
+        .level-high .level-range {
+            color: #f97316;
+        }
+
+        .level-very-high .level-range {
+            color: #dc2626;
+        }
+
+        .level-desc {
+            font-size: 0.7em;
+            color: #6b7280;
+            font-style: italic;
+            line-height: 1.2;
+        }
+
         @media (max-width: 768px) {
             .form-container {
                 grid-template-columns: 1fr;
@@ -256,6 +413,15 @@
                 margin: 10px;
                 padding: 20px;
             }
+
+            .risk-levels {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .level-desc {
+                font-size: 0.65em;
+            }
         }
     </style>
 </head>
@@ -264,6 +430,39 @@
         <div class="header">
             <h1><i class="fas fa-heartbeat"></i> Heart Failure Prediction</h1>
             <p>Advanced AI-powered cardiovascular risk assessment</p>
+        </div>
+
+        <!-- Risk Levels Guide -->
+        <div class="risk-guide">
+            <h3 style="text-align: center;">
+                <i class="fas fa-info-circle" style="color: #dc2626;"></i> Risk Levels Guide
+            </h3>
+            <div class="risk-levels">
+                <div class="risk-level-card level-low">
+                    <div class="level-icon">✓</div>
+                    <div class="level-title">Low Risk</div>
+                    <div class="level-range">&lt; 50%</div>
+                    <div class="level-desc">Healthy cardiovascular profile</div>
+                </div>
+                <div class="risk-level-card level-moderate">
+                    <div class="level-icon">⚠</div>
+                    <div class="level-title">Moderate Risk</div>
+                    <div class="level-range">50% - 65%</div>
+                    <div class="level-desc">Consider lifestyle changes</div>
+                </div>
+                <div class="risk-level-card level-high">
+                    <div class="level-icon">⚠</div>
+                    <div class="level-title">High Risk</div>
+                    <div class="level-range">65% - 80%</div>
+                    <div class="level-desc">Medical attention recommended</div>
+                </div>
+                <div class="risk-level-card level-very-high">
+                    <div class="level-icon">🚨</div>
+                    <div class="level-title">Very High Risk</div>
+                    <div class="level-range">&gt; 80%</div>
+                    <div class="level-desc">Urgent consultation required</div>
+                </div>
+            </div>
         </div>
 
         <form id="predictionForm">
@@ -488,6 +687,18 @@
             
             // Animate probability bar
             const probability = result.probability;
+            
+            // Set probability bar color based on risk level
+            if (result.risk_level === 'Low Risk') {
+                probabilityFill.style.background = 'linear-gradient(90deg, #10b981, #059669)';
+            } else if (result.risk_level === 'Moderate Risk') {
+                probabilityFill.style.background = 'linear-gradient(90deg, #f59e0b, #d97706)';
+            } else if (result.risk_level === 'High Risk') {
+                probabilityFill.style.background = 'linear-gradient(90deg, #f97316, #ea580c)';
+            } else {
+                probabilityFill.style.background = 'linear-gradient(90deg, #dc2626, #b91c1c)';
+            }
+            
             setTimeout(() => {
                 probabilityFill.style.width = probability + '%';
                 probabilityText.textContent = `Heart Disease Probability: ${probability.toFixed(1)}%`;
