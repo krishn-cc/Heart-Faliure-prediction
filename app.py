@@ -99,9 +99,12 @@ class HeartDiseasePredictionAPI:
             # Preprocess the data
             processed_data = self.preprocess_patient_data(patient_data)
             
+            # Convert to numpy array to avoid feature name warnings
+            X = processed_data.values
+            
             # Make prediction
-            prediction = self.model.predict(processed_data)[0]
-            probability = self.model.predict_proba(processed_data)[0][1]
+            prediction = self.model.predict(X)[0]
+            probability = self.model.predict_proba(X)[0][1]
             
             # Determine risk level
             if probability < 0.50:
