@@ -57,25 +57,25 @@ class HeartDiseasePredictionAPI:
             processed_data = pd.DataFrame({
                 'Age': [float(patient_data['age'])],
                 'Sex': [1 if patient_data['sex'] == 'M' else 0],
-                'RestingBP': [float(patient_data['resting_bp'])],
+                'RestingBP': [float(patient_data['restingBP'])],
                 'Cholesterol': [float(patient_data['cholesterol'])],
-                'FastingBS': [int(patient_data['fasting_bs'])],
-                'MaxHR': [float(patient_data['max_hr'])],
-                'ExerciseAngina': [1 if patient_data['exercise_angina'] == 'Y' else 0],
+                'FastingBS': [int(patient_data['fastingBS'])],
+                'MaxHR': [float(patient_data['maxHR'])],
+                'ExerciseAngina': [1 if patient_data['exerciseAngina'] == 'Y' else 0],
                 'Oldpeak': [float(patient_data['oldpeak'])]
             })
             
             # One-hot encode ChestPainType
             for cp_type in ['ATA', 'ASY', 'NAP', 'TA']:
-                processed_data[f'ChestPain_{cp_type}'] = [1 if patient_data['chest_pain'] == cp_type else 0]
+                processed_data[f'ChestPain_{cp_type}'] = [1 if patient_data['chestPain'] == cp_type else 0]
             
             # One-hot encode RestingECG
             for ecg_type in ['LVH', 'Normal', 'ST']:
-                processed_data[f'RestingECG_{ecg_type}'] = [1 if patient_data['resting_ecg'] == ecg_type else 0]
+                processed_data[f'RestingECG_{ecg_type}'] = [1 if patient_data['restingECG'] == ecg_type else 0]
             
             # One-hot encode ST_Slope
             for slope_type in ['Down', 'Flat', 'Up']:
-                processed_data[f'ST_Slope_{slope_type}'] = [1 if patient_data['st_slope'] == slope_type else 0]
+                processed_data[f'ST_Slope_{slope_type}'] = [1 if patient_data['stSlope'] == slope_type else 0]
             
             # Ensure column order matches training
             processed_data = processed_data[self.feature_names]
