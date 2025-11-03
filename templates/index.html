@@ -474,20 +474,20 @@
                 title.textContent = 'Heart Disease Risk Detected';
                 details.innerHTML = `
                     <strong>Risk Level: ${result.risk_level}</strong><br>
-                    Our AI model indicates a significant probability of cardiovascular issues.<br>
-                    <em>Please consult with a healthcare professional immediately.</em>
+                    ${result.recommendation}<br>
+                    <em>Please consult with a healthcare professional.</em>
                 `;
             } else {
                 title.textContent = 'Low Heart Disease Risk';
                 details.innerHTML = `
                     <strong>Risk Level: ${result.risk_level}</strong><br>
-                    Our AI model indicates a low probability of cardiovascular issues.<br>
+                    ${result.recommendation}<br>
                     <em>Continue maintaining a healthy lifestyle!</em>
                 `;
             }
             
             // Animate probability bar
-            const probability = (result.probability_heart_disease * 100);
+            const probability = result.probability;
             setTimeout(() => {
                 probabilityFill.style.width = probability + '%';
                 probabilityText.textContent = `Heart Disease Probability: ${probability.toFixed(1)}%`;
