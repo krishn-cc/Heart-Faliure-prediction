@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: heart-disease-prediction
+    name: heart-disease-predictor-ai
     env: python
     region: oregon
     plan: free
