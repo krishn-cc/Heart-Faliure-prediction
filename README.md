@@ -5,7 +5,6 @@ A complete machine learning web application that predicts heart disease risk usi
 ##  Quick Start
 
 
-
 ## Dataset Description
 
 The dataset contains **918 patient records** with 11 medical features:
